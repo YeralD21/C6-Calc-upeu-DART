@@ -13,7 +13,6 @@ class CalcButton extends StatelessWidget {
     this.textSize = 20,
     this.callback,
   }) : super(key: key);
-//Aquí Codigo
 
   @override
   Widget build(BuildContext context) {

@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "pe.edu.upeu" "\0"
-            VALUE "FileDescription", "calc_upeu" "\0"
+            VALUE "FileDescription", "calc_flutter" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "calc_upeu" "\0"
+            VALUE "InternalName", "calc_flutter" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 pe.edu.upeu. All rights reserved." "\0"
-            VALUE "OriginalFilename", "calc_upeu.exe" "\0"
-            VALUE "ProductName", "calc_upeu" "\0"
+            VALUE "OriginalFilename", "calc_flutter.exe" "\0"
+            VALUE "ProductName", "calc_flutter" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

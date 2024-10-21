@@ -12,13 +12,13 @@ class AppTheme {
   ];
   AppTheme._();
   static List<String> colorText = <String>[
-    "Purple",
-    "Green",
-    "Teal",
-    "Yellow",
-    "Orange",
-    "Pink",
-    "Personalizado",
+  "Purple",
+  "Green",
+  "Teal",
+  "Yellow",
+  "Orange",
+  "Pink",
+  "Personalizado",
   ];
   static bool useMaterial3 = false;
   static bool useLightMode = true;

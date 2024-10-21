@@ -1,17 +1,16 @@
-import 'package:calc_upeu/comp/CalcButton.dart';
-import 'package:calc_upeu/comp/CustomAppBar.dart';
-import 'package:calc_upeu/theme/AppTheme.dart';
+import 'package:calc_flutter/comp/CustomAppBarX.dart';
+import 'package:calc_flutter/theme/AppTheme.dart';
 import 'package:flutter/material.dart';
+import './comp/CalcButton.dart';
+import 'dart:math';
 
-void main() {
-  runApp(const CalcApp());
-}
-
+void main() => runApp(CalcApp());
 class CalcApp extends StatefulWidget {
   const CalcApp({super.key}) ;
   @override
   CalcAppState createState() => CalcAppState();
 }
+
 class CalcAppState extends State<CalcApp> {
   String valorAnt = '';
   String operador = '';
@@ -37,40 +36,54 @@ class CalcAppState extends State<CalcApp> {
       print("");
     });
   }
+
   void resultOperacion(String text) {
     setState(() {
-      switch (operador) {
-        case "/":
-          _controller.text =
-              (int.parse(valorAnt) / int.parse(_controller.text)).toString();
-          break;
-        case "*":
-          _controller.text =
-              (int.parse(valorAnt) * int.parse(_controller.text)).toString();
-          break;
-        case "+":
-          _controller.text =
-              (int.parse(valorAnt) + int.parse(_controller.text)).toString();
-          break;
-        case "-":
-          _controller.text =
-              (int.parse(valorAnt) - int.parse(_controller.text)).toString();
-          break;
-        case "%":
-          _controller.text =
-              (int.parse(valorAnt) % int.parse(_controller.text)).toString();
-          break;
+      if (text == "^2") {
+        _controller.text = (pow(double.parse(valorAnt), 2)).toString();
+      } else if (text == "√") {
+        _controller.text = (sqrt(double.parse(valorAnt))).toString();
+      } else if (text == "π") {
+        _controller.text = (pi).toString();
+      } else {
+        // Aquí colocas el código para las operaciones que requieren segundo operando
+        switch (operador) {
+          case "/":
+            _controller.text =
+                (double.parse(valorAnt) / double.parse(_controller.text)).toString();
+            break;
+          case "*":
+            _controller.text =
+                (double.parse(valorAnt) * double.parse(_controller.text)).toString();
+            break;
+          case "+":
+            _controller.text =
+                (double.parse(valorAnt) + double.parse(_controller.text)).toString();
+            break;
+          case "-":
+            _controller.text =
+                (double.parse(valorAnt) - double.parse(_controller.text)).toString();
+            break;
+          case "%":
+            _controller.text =
+                (double.parse(valorAnt) % double.parse(_controller.text)).toString();
+            break;
+        }
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
-    List<List> labelList = [["AC","C","%","/"], ["7","8","9","*"],["4","5","6","-"],["1","2","3","+"],[".","0","00","="]];
-    List<List> funx=[[clear,clear, opeClick,opeClick ],
-      [numClick,numClick, numClick,opeClick ],
-      [numClick,numClick, numClick,opeClick ],
-      [numClick,numClick, numClick,opeClick ],
-      [numClick,numClick, numClick,resultOperacion ]];
+
+    List<List> labelList = [["AC","C","%","/"], ["7","8","9","*"],["4","5","6","-"],["1","2","3","+"],[".","0","00","="],["^2","√","π"]];
+    List<List> funx=[
+      [clear, clear, opeClick, opeClick ],
+      [numClick, numClick, numClick, opeClick ],
+      [numClick, numClick, numClick, opeClick ],
+      [numClick, numClick, numClick, opeClick ],
+      [numClick, numClick, numClick, resultOperacion ],
+      [resultOperacion, resultOperacion, resultOperacion ]];
 
     AppTheme.colorX=Colors.blue;
     return MaterialApp(
@@ -94,7 +107,6 @@ Theme.of(context).colorScheme.surfaceVariant,*/
                   controller: _controller,
                 ),
               ),
-//aqui codigo
               SizedBox(height: 20),
               ...List.generate(labelList.length, (index) =>
                   Row(
@@ -111,7 +123,6 @@ Theme.of(context).colorScheme.surfaceVariant,*/
                     ],
                   )
               )
-
             ],
           ),
         ),
